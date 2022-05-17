@@ -44,5 +44,6 @@ These are additional tests to foolproof the work and ensure there are no errors.
 ![1](https://user-images.githubusercontent.com/12171326/168804350-f18e4c7d-23c5-4203-b574-800cd7512d82.PNG)
 ![2](https://user-images.githubusercontent.com/12171326/168804378-4dc5ff61-3fb3-4484-b267-09e631f1390a.PNG)
 
-
+### RUNNING ENVIRONMENT
+Code is written in Jupyter notebooks.
     
