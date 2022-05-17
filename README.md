@@ -28,9 +28,7 @@ The star schema has 1 fact table (songplays) and 4 dimensions tables(users,songs
 # PROJECT STEPS
 ### 1.Create Tables 
    - Write create and drop tables queries in *sql queries.py*
-   - 
-   - Run *create_tables.py* to create your database and tables.
-   - 
+   - Run *create_tables.py* to create your database and tables
    - Run *test.ipynb* to confirm the creation of your tables with the correct columns. Make sure to click "Restart kernel" to close the connection to the database after running this notebook.
  
 ### 2.Build ETL Processes
