@@ -7,7 +7,8 @@ In this we weill define fact and dimension tables for a star schema for a partic
 
 # SCHEMA DESIGN 
 The star schema has 1 fact table (songplays) and 4 dimensions tables(users,songs,time,artists). The pictorial representation is shown below.
-![sparkifydb_erd](https://user-images.githubusercontent.com/12171326/168798365-d2af3db7-8f1c-4fe6-8479-fdf69f93dde8.png)
+![sparkifydb_erd (1)](https://user-images.githubusercontent.com/12171326/168804621-2453f4dd-47d0-49c4-9030-cd0e53b0f9be.png)
+
 
 # RELEVANT FILES FOR THIS PROJECT
 test.ipynb displays the first few rows of each table to let you check your database.
