@@ -6,11 +6,20 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    '''
+    Reads song data and processes it in JSON format.
+    Extract values from dataframe for song and artist table and convert it into list to be able to modify list. Only one record is created for
+    both the tables.
+    
+    Parameters:
+        cur (object): Cursor object that allows the Python code to execute the PostgreSQL insert commands
+        filepath (str): String that identifies the folder path for the song data.
+    '''
     # open song file
     df = pd.read_json(filepath, lines=True)
 
     # insert song record
-    song_data = song_data =list(df[['song_id','title','artist_id','year','duration']].values[0]) 
+    song_data =list(df[['song_id','title','artist_id','year','duration']].values[0]) 
     cur.execute(song_table_insert, song_data)
     
     # insert artist record
@@ -19,6 +28,17 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    '''
+    Reads log data and processes it in JSON format.
+    
+    Extract values from dataframe for time,user and songplay table.  Only one record is created for all the tables.
+        
+    Parameters:
+        cur (object): Cursor object that allows the Python code to execute the PostgreSQL insert commands
+        filepath (str): String that identifies the folder path for the log data.
+    '''
+     
+     
     # open log file
     df =pd.read_json(filepath, lines= True) 
 
@@ -61,6 +81,10 @@ def process_log_file(cur, filepath):
 
 
 def process_data(cur, conn, filepath, func):
+    '''
+    Fetches all the data from song and log table from directory and prints the information regarding the files and iterate over files and process.
+    '''
+    
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -77,14 +101,23 @@ def process_data(cur, conn, filepath, func):
         func(cur, datafile)
         conn.commit()
         print('{}/{} files processed.'.format(i, num_files))
+        
 from sqlalchemy_schemadisplay import create_schema_graph
 from sqlalchemy import MetaData
 def main():
+    '''
+    To create ERD schema graph from sqlalchemy package.
+    '''
     graph = create_schema_graph(metadata=MetaData('postgresql://student:student@127.0.0.1/sparkifydb'))
     graph.write_png('sparkifydb_erd.png')
 if __name__ == "__main__":
     main()
+    
+    
 def main():
+    '''
+    Connection to database sprakifydb and ETL pipeline.
+    '''
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
