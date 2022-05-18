@@ -11,7 +11,7 @@ def process_song_file(cur, filepath):
     Extract values from dataframe for song and artist table and convert it into list to be able to modify list. Only one record is created for
     both the tables.
     
-    Parameters:
+    INPUTS:
         cur (object): Cursor object that allows the Python code to execute the PostgreSQL insert commands
         filepath (str): String that identifies the folder path for the song data.
     '''
@@ -33,7 +33,7 @@ def process_log_file(cur, filepath):
     
     Extract values from dataframe for time,user and songplay table.  Only one record is created for all the tables.
         
-    Parameters:
+    INPUTS:
         cur (object): Cursor object that allows the Python code to execute the PostgreSQL insert commands
         filepath (str): String that identifies the folder path for the log data.
     '''
@@ -83,6 +83,12 @@ def process_log_file(cur, filepath):
 def process_data(cur, conn, filepath, func):
     '''
     Fetches all the data from song and log table from directory and prints the information regarding the files and iterate over files and process.
+    
+    INPUTS:
+        cur (object): Cursor object that allows the Python code to execute the PostgreSQL insert commands
+        conn (connection instance): Calls the connect() function to create a new Postgres database session
+        filepath (str): filepath to folder data.
+        func (function): The function being called to process either song data or log data
     '''
     
     # get all files matching extension from directory
@@ -106,7 +112,8 @@ from sqlalchemy_schemadisplay import create_schema_graph
 from sqlalchemy import MetaData
 def main():
     '''
-    To create ERD schema graph from sqlalchemy package.
+    To create ERD schema graph of meta data from sparkifydb using sqlalchemy_schemadisplay package.
+    Run pip install sqlalchemy_schemadisplay in terminal before running etl.py
     '''
     graph = create_schema_graph(metadata=MetaData('postgresql://student:student@127.0.0.1/sparkifydb'))
     graph.write_png('sparkifydb_erd.png')
@@ -116,7 +123,7 @@ if __name__ == "__main__":
     
 def main():
     '''
-    Connection to database sprakifydb and ETL pipeline.
+    Connection to database sparkifydb and ETL pipeline.
     '''
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
