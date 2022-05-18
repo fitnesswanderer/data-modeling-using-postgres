@@ -46,8 +46,12 @@ These are additional tests to foolproof the work and ensure there are no errors.
 
 ### RUNNING ENVIRONMENT
 -Code is written in Jupyter notebooks.
+
 -Run *python create_tables.py* in terminal. This will execute sql_queries.py by creating sparkifydb.
--Run *python etl.py* in terminal after completing etl.ipynb. 
--create_tables.py is python script to execute PostgreSQL queries in python and etl.pyis python script to perform etl pipeline.
+
+-Run *python etl.py* in terminal after completing etl.ipynb.
+
+-create_tables.py is python script to execute PostgreSQL queries in python and etl.py is python script to perform etl pipeline.
+
 -Run test.ipynb, etl.ipynb, or etl.py until you have run create_tables.py at least once to create the sparkifydb database, which these other files connect to.
     
